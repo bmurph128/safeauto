@@ -25,7 +25,7 @@ namespace SafeAutoDriverUpload.Controllers
     {
       var file = Request.Form.Files[0];
       var dtos = _fileUploadService.UploadFile(file);
-
+      dtos.Sort((x, y) => y.Miles.CompareTo(x.Miles));
       return Ok(dtos);
     }
 
