@@ -70,15 +70,13 @@ namespace SafeAutoDriverUpload.Logic
             foreach (Driver driver in drivers)
             {
                 var dto = new DriverDto();
-                double hours = 0;
-                double miles = 0;
                 double totalMiles = 0;
                 double totalHours = 0;
 
                 foreach (Trip data in driver.Trips)
                 {
                     TimeSpan timeDriving = data.TripEndTime - data.TripStartTime;
-                    hours = timeDriving.TotalMinutes / 60;
+                   double hours = timeDriving.TotalMinutes / 60;
                     if (data.MilesDriven / hours >= 5 && data.MilesDriven / hours <= 100)
                     {
                         totalMiles += data.MilesDriven;
